@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-export const StyleFormContainer = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 800px;
+  gap: 8px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 16px;
+  max-width: 800px;
 `;
