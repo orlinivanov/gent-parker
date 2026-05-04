@@ -6,13 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@/types";
 import { userSchema } from "@/types/schemas";
 import { Button, TextField } from "@mui/material";
-import { StyleFormContainer } from "./styled";
+import { StyledContainer } from "../styled";
 import { createEmptyUser, userHasValues } from "@/lib/user";
-import { setUserCookie } from "@/lib/actions";
+import { setUserCookie, deleteUserCookie } from "@/lib/actions";
 
 interface Props {
   user?: User;
-  onSave?: (user: User) => void;
 }
 
 export default function UserProfileForm({ user = {} as User }: Props) {
@@ -26,7 +25,7 @@ export default function UserProfileForm({ user = {} as User }: Props) {
   });
 
   return (
-    <StyleFormContainer>
+    <StyledContainer>
       <Controller
         name={`firstName`}
         control={control}
@@ -89,6 +88,12 @@ export default function UserProfileForm({ user = {} as User }: Props) {
       <Button variant="contained" onClick={handleSubmit(setUserCookie)}>
         Save
       </Button>
-    </StyleFormContainer>
+      <Button variant="contained" onClick={() => deleteUserCookie()}>
+        Delete
+      </Button>
+      <Button href="/" disabled={!userHasValues(user)}>
+        Back to List
+      </Button>
+    </StyledContainer>
   );
 }

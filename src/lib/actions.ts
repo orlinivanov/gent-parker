@@ -11,3 +11,8 @@ export async function setUserCookie(user: User) {
     path: "/",
   });
 }
+
+export async function deleteUserCookie() {
+  const cookieStore = await cookies();
+  cookieStore.delete("user");
+}

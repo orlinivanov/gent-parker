@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AppBar, IconButton, Stack, Typography } from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +26,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AppBar position="static" color="transparent" enableColorOnDark>
+          <Stack direction="row" style={{alignItems: "center", justifyContent: "space-between", padding: "0 16px"}}>
+            <Typography variant="h4" align="center" style={{flexGrow: 1}}>Gent Parker</Typography>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              href="/profile"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </Stack>
+        </AppBar>
+        {children}
+      </body>
     </html>
   );
 }
