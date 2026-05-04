@@ -1,4 +1,5 @@
 import { z } from "zod";
-import { userSchema } from "./schemas";
+import { parkingGarageRecordSchema, userSchema } from "./schemas";
 
 export type User = z.infer<typeof userSchema>;
+export type ParkingGarageRecord = z.infer<typeof parkingGarageRecordSchema>;
